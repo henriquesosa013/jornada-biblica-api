@@ -5,7 +5,8 @@ const doc = {
     title: 'Jornada Bíblica API', 
     description: 'API do jogo'
   },
-  host: 'localhost:3000'
+  host: 'jornada-biblica-api.onrender.com',
+  schemes: ['https']
 }
 
 const outputFile = './swagger.json'
