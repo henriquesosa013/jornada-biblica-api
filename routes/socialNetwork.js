@@ -13,7 +13,7 @@ router.post('/socialnetwork', authtoken ,async(req,res)=>{
     });
     res.status(201).json(newsocial)
     } catch (erro){
-        res.json(400).json({erro})
+        res.status(400).json({erro})
     }
 })
 
@@ -28,7 +28,7 @@ router.delete('/socialnetwork', authtoken,async(req,res)=>{
             return res.status(400).send({ message: "você não tem permissão pra deletar esse amigo" })
         }
         const result = await socialNetwork.deleteOne({
-        userId: req.usuario,
+        userid: req.usuario,
         friendid: req.body.friendid
     });
         res.status(200).json({ menssage: "Deletado com sucesso" });
@@ -40,6 +40,7 @@ router.delete('/socialnetwork', authtoken,async(req,res)=>{
 
 router.get('/socialnetwork',authtoken,async (req,res)=>{
     try{
+        const userid = req.usuario
         const socialSearch = await socialNetwork.find({userid: userid});
         res.status(200).send(socialSearch)
     } catch (erro){

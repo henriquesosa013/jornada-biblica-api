@@ -20,7 +20,7 @@ router.post('/notifications', authtoken, async(req,res)=>{
 
 router.put('/notifications', authtoken,isAdmin, async(req,res)=>{
     try{
-        const id = await facs.findById(req.query.id);
+        const id = await notifications.findById(req.query.id);
         if (!id) {
             return res.status(404).send({
                 message: "não encontrado"

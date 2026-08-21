@@ -12,6 +12,4 @@ mongo ()
 app.use(rotas)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
-app.listen(process.env.PORT, () =>{
-    console.log("Servidor Rodando localhost");
-});
+export default app

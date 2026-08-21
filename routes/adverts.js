@@ -2,12 +2,12 @@ import { Router } from 'express'
 import { authtoken } from '../middleware/tokenauth.js'
 import multer from 'multer'
 import fs from 'fs'
-import Adverts from '../models/adverts.js'
+import adverts from '../models/adverts.js'
 import isAdmin from '../middleware/isadm.js'
 const router = Router()
 
 router.post('/adverts', authtoken,isAdmin, async(req,res)=>{
-    const newadverts = await Adverts.create({
+    const newadverts = await adverts.create({
         title: req.body.title,
         photo: req.body.photo,
         description: req.body.description

@@ -12,6 +12,7 @@ router.post('/battle', authtoken, async (req,res)=>{
         const userid = req.usuario
         const newbattle = await Battles.create({
             userid: userid,
+            battleid: req.body.battleId,
             data: req.body
         })
         res.status(201).json(newbattle)

@@ -24,11 +24,11 @@ router.post('/questions/answer', authtoken, async (req,res) =>{
         const question = await questions.findById(questionid)
 
         if(!question){
-            return status(400).json({ erro: 'questão nao encontrada'})
+            return res.status(400).json({ erro: 'questão nao encontrada'})
         }
 
         const alreadyresponse = await responses.findOne({ userid, questionid })
-        if(jaRespondeu){
+        if(alreadyresponse){
             return res.status(400).json({ erro: 'você já respondeu essa pergunta' })
         }
     

@@ -29,7 +29,7 @@ router.post('/login', async (req,res)=>{
     const usuario = await User.findOne({email: req.body.email})
 
     if (!usuario){
-        return console.log("Usuario nao encontrado")
+        return res.status(404).json({ erro: "usuario nao encontrado" })
     }
 
     const senhacorreta = await login ( req.body.password, usuario.password)
